@@ -1,0 +1,24 @@
+package login;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+public class Login1 {
+public static void main(String[] args) {
+WebDriver driver = new FirefoxDriver();
+// Put a Implicit wait, this means that any search for elements on the page
+could take the time the implicit wait is set for before throwing exception 
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+driver.get("https://mail.google.com/");
+// Maximize the window.
+driver.manage().window().maximize();
+driver.findElement(By.id("Email")).sendKeys(" YOUR USER NAME");
+driver.findElement(By.id("Passwd")).sendKeys("YOUR PASSWORD");
+driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+driver.findElement(By.id("signIn")).click();
+driver.findElement(By.xpath("//div[@class='z0']/div")).click();
+driver.findElement(By.xpath("//div[@class='gb_1 gb_3a gb_nc gb_e']/div/a")).click()
+driver.findElement(By.xpath("//*[@id='gb_71']")).click();
+driver.close();
+}
+}
